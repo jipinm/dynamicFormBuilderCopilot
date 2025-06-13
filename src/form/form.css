@@ -1,0 +1,1093 @@
+/* 
+* src/form/form.css 
+* Styles for the dynamic form components 
+*/
+
+/* Base design variables */
+:root {
+  /* Common variables across themes */
+  --transition-speed: 0.3s;
+}
+
+/* Simple theme variables - Light Mode (default) */
+.theme-simple.mode-light {
+  --primary-color: #007bff;
+  --primary-color-rgb: 0, 123, 255;
+  --primary-light: #80bdff;
+  --secondary-color: #6c757d;
+  --accent-color: #17a2b8;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --text-dark: #212529;
+  --text-medium: #495057;
+  --text-light: #6c757d;
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --bg-form: #ffffff;
+  --bg-input: #ffffff;
+  --bg-header: #ffffff;
+  --border-color: #ced4da;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 3px 10px rgba(0, 0, 0, 0.1);
+  --border-radius-sm: 4px;
+  --border-radius: 6px;
+  --border-radius-lg: 8px;
+}
+
+/* Simple theme variables - Dark Mode */
+.theme-simple.mode-dark {
+  --primary-color: #3b82f6;
+  --primary-color-rgb: 59, 130, 246;
+  --primary-light: #93c5fd;
+  --secondary-color: #9ca3af;
+  --accent-color: #06b6d4;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --text-dark: #f3f4f6;
+  --text-medium: #d1d5db;
+  --text-light: #9ca3af;
+  --bg-light: #1f2937;
+  --bg-white: #111827;
+  --bg-form: #1f2937;
+  --bg-input: #374151;
+  --bg-header: #111827;
+  --border-color: #4b5563;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 3px 10px rgba(0, 0, 0, 0.3);
+  --border-radius-sm: 4px;
+  --border-radius: 6px;
+  --border-radius-lg: 8px;
+}
+
+/* Modern theme variables - Light Mode */
+.theme-modern.mode-light {
+  --primary-color: #4361ee;
+  --primary-color-rgb: 67, 97, 238;
+  --primary-light: #4895ef;
+  --secondary-color: #3f37c9;
+  --accent-color: #4cc9f0;
+  --success-color: #0cce6b;
+  --warning-color: #ff9e00;
+  --danger-color: #e5383b;
+  --text-dark: #212529;
+  --text-medium: #495057;
+  --text-light: #6c757d;
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --bg-form: #ffffff;
+  --bg-input: #ffffff;
+  --bg-header: #ffffff;
+  --border-color: #e9ecef;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(67, 97, 238, 0.1);
+  --shadow-lg: 0 8px 24px rgba(67, 97, 238, 0.15);
+  --border-radius-sm: 4px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+}
+
+/* Modern theme variables - Dark Mode */
+.theme-modern.mode-dark {
+  --primary-color: #6366f1;
+  --primary-color-rgb: 99, 102, 241;
+  --primary-light: #818cf8;
+  --secondary-color: #4f46e5;
+  --accent-color: #22d3ee;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --text-dark: #f3f4f6;
+  --text-medium: #d1d5db;
+  --text-light: #9ca3af;
+  --bg-light: #1f2937;
+  --bg-white: #111827;
+  --bg-form: #1f2937;
+  --bg-input: #374151;
+  --bg-header: #111827;
+  --border-color: #4b5563;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --border-radius-sm: 4px;
+  --border-radius: 6px;
+  --border-radius-lg: 12px;
+}
+
+/* For backwards compatibility (support theme without mode) */
+.theme-simple {
+  --primary-color: #007bff;
+  --primary-color-rgb: 0, 123, 255;
+  --primary-light: #80bdff;
+  --secondary-color: #6c757d;
+  --accent-color: #17a2b8;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --text-dark: #212529;
+  --text-medium: #495057;
+  --text-light: #6c757d;
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --bg-form: #ffffff;
+  --bg-input: #ffffff;
+  --bg-header: #ffffff;
+  --border-color: #ced4da;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 3px 10px rgba(0, 0, 0, 0.1);
+  --border-radius-sm: 4px;
+  --border-radius: 6px;
+  --border-radius-lg: 8px;
+}
+
+.theme-modern {
+  --primary-color: #4361ee;
+  --primary-color-rgb: 67, 97, 238;
+  --primary-light: #4895ef;
+  --secondary-color: #3f37c9;
+  --accent-color: #4cc9f0;
+  --success-color: #0cce6b;
+  --warning-color: #ff9e00;
+  --danger-color: #e5383b;
+  --text-dark: #212529;
+  --text-medium: #495057;
+  --text-light: #6c757d;
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --bg-form: #ffffff;
+  --bg-input: #ffffff;
+  --bg-header: #ffffff;
+  --border-color: #e9ecef;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(67, 97, 238, 0.1);
+  --shadow-lg: 0 8px 24px rgba(67, 97, 238, 0.15);
+  --border-radius-sm: 4px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+}
+
+/* Global form animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseHighlight {
+  0% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(76, 201, 240, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0); }
+}
+
+/* Animations only apply to modern theme */
+.theme-simple .form-section,
+.theme-simple .field-group,
+.theme-simple .group-instance,
+.theme-simple .schema-form {
+  animation: none !important;
+  transform: none !important;
+}
+
+.theme-simple .field-errors,
+.theme-simple .field-validated::after {
+  animation: none !important;
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Progressive loading animation for sections */
+.form-section:nth-child(1) { animation-delay: 0s; }
+.form-section:nth-child(2) { animation-delay: 0.1s; }
+.form-section:nth-child(3) { animation-delay: 0.2s; }
+.form-section:nth-child(4) { animation-delay: 0.3s; }
+.form-section:nth-child(5) { animation-delay: 0.4s; }
+
+/* Loading indicator */
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+.loading-shimmer {
+  position: relative;
+  background: #f6f7f8;
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  min-height: 20px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Main form container - Base styles */
+.schema-form {
+  max-width: 800px;
+  margin: 0 auto;
+  transition: all var(--transition-speed) ease;
+  color: var(--text-dark);
+}
+
+/* Simple theme form */
+.theme-simple .schema-form {
+  padding: 20px;
+  background-color: var(--bg-form);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-simple .schema-form h2 {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.theme-simple .schema-form p {
+  color: var(--text-medium);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Modern theme form */
+.theme-modern .schema-form {
+  padding: 25px;
+  background-color: var(--bg-form);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.theme-modern.mode-light .schema-form:hover {
+  box-shadow: var(--shadow-lg), 0 10px 30px rgba(67, 97, 238, 0.1);
+}
+
+.theme-modern.mode-dark .schema-form:hover {
+  box-shadow: var(--shadow-lg), 0 10px 30px rgba(67, 97, 238, 0.2);
+}
+
+.theme-modern .schema-form h2 {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+}
+
+.theme-modern .schema-form h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  height: 3px;
+  width: 60px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 3px;
+}
+
+.theme-modern .schema-form p {
+  color: var(--text-medium);
+  margin-bottom: 1.75rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Base section styles */
+.form-section {
+  margin-bottom: 30px;
+  background-color: var(--bg-form);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+}
+
+/* Simple theme section */
+.theme-simple .form-section {
+  padding: 15px;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-simple .section-header {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.theme-simple .section-header h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.theme-simple .section-description {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  margin-bottom: 10px;
+}
+
+/* Modern theme section */
+.theme-modern .form-section {
+  margin-bottom: 35px;
+  padding: 25px;
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.4s ease-out;
+  border-left: 3px solid var(--primary-light);
+}
+
+.theme-modern .form-section:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.theme-modern .section-header {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.theme-modern .section-header h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.theme-modern .section-header h3::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.theme-modern .section-description {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  margin-bottom: 15px;
+  line-height: 1.5;
+  padding-left: 18px;
+}
+
+/* Base field group styles */
+.field-group {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius);
+}
+
+/* Simple theme field group */
+.theme-simple .field-group {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Modern theme field group */
+.theme-modern .field-group {
+  margin-bottom: 25px;
+  padding: 20px;
+  transition: all var(--transition-speed) ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.theme-modern .field-group:hover {
+  background-color: rgba(72, 149, 239, 0.03);
+  border-color: rgba(76, 201, 240, 0.3);
+}
+
+/* Base group header */
+.group-header {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.group-header h4 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Modern theme group header */
+.theme-modern .group-header {
+  margin-bottom: 18px;
+}
+
+.theme-modern .group-header h4 {
+  color: var(--primary-color);
+  display: inline-block;
+  position: relative;
+}
+
+.theme-modern .group-header h4::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-light), transparent);
+}
+
+/* Base group description */
+.group-description {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+/* Modern theme group description */
+.theme-modern .group-description {
+  font-size: 0.9rem;
+}
+
+/* Base group instance */
+.group-instance {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--bg-white);
+}
+
+/* Simple theme group instance */
+.theme-simple .group-instance {
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Modern theme group instance */
+.theme-modern .group-instance {
+  margin-bottom: 20px;
+  padding: 15px;
+  transition: all var(--transition-speed) ease;
+  animation: fadeIn 0.3s ease-out;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-modern .group-instance:hover {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+/* Base form field styles */
+.form-field {
+  margin-bottom: 15px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.form-field * {
+  box-sizing: border-box;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-medium);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--bg-input);
+  color: var(--text-dark);
+  box-sizing: border-box;
+}
+
+/* Simple theme form fields */
+.theme-simple .form-field {
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+.theme-simple .form-field label {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.theme-simple .form-field input,
+.theme-simple .form-field select,
+.theme-simple .form-field textarea {
+  padding: 8px 12px;
+  max-width: 100%;
+  height: auto;
+  min-height: 38px;
+}
+
+.theme-simple .form-field input:focus,
+.theme-simple .form-field select:focus,
+.theme-simple .form-field textarea:focus {
+  border-color: var(--primary-light);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-color-rgb, 0, 123, 255), 0.25);
+}
+
+/* Fix for select fields that might have icons overlapping */
+.theme-simple .form-field select {
+  padding-right: 30px;
+}
+
+/* Modern theme form fields */
+.theme-modern .form-field {
+  margin-bottom: 22px;
+  padding: 0;
+  transition: all var(--transition-speed) ease;
+}
+
+.theme-modern .form-field:hover label {
+  color: var(--primary-color);
+}
+
+.theme-modern .form-field label {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.theme-modern .form-field input,
+.theme-modern .form-field select,
+.theme-modern .form-field textarea {
+  padding: 12px 15px;
+  max-width: 100%;
+  height: auto;
+  min-height: 45px;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.theme-modern .form-field input:hover,
+.theme-modern .form-field select:hover,
+.theme-modern .form-field textarea:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 2px 5px rgba(76, 201, 240, 0.1);
+}
+
+.theme-modern .form-field input:focus,
+.theme-modern .form-field select:focus,
+.theme-modern .form-field textarea:focus {
+  border-color: var(--primary-color);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 67, 97, 238), 0.15);
+  animation: pulseHighlight 1.5s;
+}
+
+/* Fix for select fields that might have icons overlapping */
+.theme-modern .form-field select {
+  padding-right: 40px;
+}
+
+/* Select Field Base Styling */
+.form-field select {
+  appearance: none;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* Simple Theme Select Styling */
+.theme-simple .form-field select {
+  padding-right: 30px !important;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23495057' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-position: right 8px center;
+  background-size: 16px;
+}
+
+.theme-simple .form-field select:focus {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23007bff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+}
+
+/* Modern Theme Select Styling */
+.theme-modern .form-field select {
+  padding-right: 40px !important;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23495057' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-position: right 12px center;
+  background-size: 18px;
+}
+
+.theme-modern .form-field select:focus {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%234361ee' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+}
+
+/* Radio Buttons Base Styling */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Simple theme radio buttons */
+.theme-simple .radio-group {
+  gap: 8px;
+}
+
+.theme-simple .radio-option {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.theme-simple .radio-option input[type="radio"] {
+  margin-right: 5px;
+  width: auto;
+  min-height: auto;
+}
+
+.theme-simple .radio-option span {
+  font-size: 0.95rem;
+}
+
+/* Modern theme radio buttons */
+.theme-modern .radio-group {
+  gap: 12px;
+}
+
+.theme-modern .radio-option {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: 0.95rem;
+  user-select: none;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.theme-modern .radio-option input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.theme-modern .radio-option span {
+  padding: 8px 16px 8px 35px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  background-color: var(--bg-white);
+  display: block;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.theme-modern .radio-option span::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.theme-modern .radio-option:hover span {
+  border-color: var(--primary-light);
+  background-color: rgba(76, 201, 240, 0.03);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-modern .radio-option:hover span::before {
+  border-color: var(--primary-color);
+}
+
+.theme-modern .radio-option input:checked ~ span {
+  border-color: var(--primary-color);
+  background-color: rgba(67, 97, 238, 0.04);
+}
+
+.theme-modern .radio-option input:checked ~ span::before {
+  border-color: var(--primary-color);
+}
+
+.theme-modern .radio-option input:checked ~ span::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  transition: all 0.2s ease;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Base checkbox styling */
+.form-field input[type="checkbox"] {
+  width: auto;
+  height: 18px;
+  width: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Simple theme checkbox */
+.theme-simple .form-field input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Modern theme checkbox */
+.theme-modern .form-field input[type="checkbox"] {
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  appearance: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  min-height: auto;
+}
+
+.theme-modern .form-field input[type="checkbox"]:hover {
+  border-color: var(--primary-color);
+}
+
+.theme-modern .form-field input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.theme-modern .form-field input[type="checkbox"]:checked::after {
+  content: '✓';
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Focus styling for accessibility */
+.form-field input[type="checkbox"]:focus {
+  outline: auto;
+}
+
+.theme-modern .form-field input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+  outline: none;
+}
+
+.field-help-text {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 7px;
+  line-height: 1.4;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  padding-left: 2px;
+}
+
+.form-field:hover .field-help-text {
+  opacity: 1;
+}
+
+.field-unit {
+  margin-left: 8px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.03);
+  padding: 2px 6px;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Fixes for textarea elements */
+.form-field textarea {
+  min-height: 80px;
+  resize: vertical;
+  overflow: auto;
+}
+
+.theme-simple .form-field textarea {
+  padding: 8px 12px;
+}
+
+.theme-modern .form-field textarea {
+  padding: 12px 15px;
+}
+
+/* Fix for field units display */
+.field-unit {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 4px;
+}
+
+/* Fix for checkbox alignment */
+.form-field input[type="checkbox"] {
+  width: auto;
+  min-height: auto;
+  margin-right: 5px;
+}
+
+/* Fix for fieldsets and legends if any */
+fieldset {
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: var(--border-radius-sm);
+}
+
+legend {
+  padding: 0 10px;
+  font-weight: 500;
+}
+
+/* Fix for any overlapping field labels */
+.form-field label {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* Ensure all field containers have proper spacing */
+.field-group .form-field,
+.group-instance .form-field {
+  padding: 0;
+}
+
+/* Base form actions */
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.form-actions button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.form-actions button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.form-actions button[type="button"] {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Simple theme form actions */
+.theme-simple .form-actions {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.theme-simple .form-actions button {
+  padding: 8px 20px;
+  font-weight: 500;
+}
+
+.theme-simple .form-actions button:hover {
+  opacity: 0.9;
+}
+
+/* Modern theme form actions */
+.theme-modern .form-actions {
+  margin-top: 40px;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+@keyframes buttonPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.theme-modern .form-actions button {
+  padding: 12px 28px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-modern .form-actions button:hover {
+  transform: translateY(-2px);
+}
+
+.theme-modern .form-actions button:active {
+  transform: translateY(1px);
+}
+
+.theme-modern .form-actions button[type="submit"] {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.theme-modern .form-actions button[type="submit"]:hover {
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+  animation: buttonPulse 1s infinite;
+}
+
+.theme-modern .form-actions button[type="button"] {
+  background-color: var(--bg-light);
+  color: var(--text-medium);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.theme-modern .form-actions button[type="button"]:hover {
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+}
+
+/* Disabled button states */
+.form-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.theme-modern .form-actions button:disabled {
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+  animation: none !important;
+}
+
+/* Field hover state transition */
+.form-field:hover::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--primary-light);
+  border-radius: 3px;
+  transition: height 0.3s ease;
+  animation: growHeight 0.3s forwards;
+}
+
+@keyframes growHeight {
+  from { height: 0; }
+  to { height: 70%; }
+}
+
+/* Form validation success indicator */
+.field-validated {
+  position: relative;
+}
+
+.field-validated::after {
+  content: '✓';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--success-color);
+  font-size: 16px;
+  opacity: 0;
+  animation: fadeIn 0.3s 0.5s forwards;
+}
+
+/* Input focus effect */
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  transform: translateY(-1px);
+}
+
+/* Fixes for any container overflow issues */
+.schema-form * {
+  box-sizing: border-box;
+}
+
+.form-section,
+.field-group,
+.form-field {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Fix for error messages to prevent layout shift */
+.field-errors {
+  min-height: 0;
+  width: 100%;
+}
+
+/* Fix for long words/values in inputs */
+.form-field input,
+.form-field select,
+.form-field textarea {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Fix for select dropdowns */
+.form-field select option {
+  white-space: normal;
+  padding: 5px;
+}
+
+/* Make sure buttons don't overflow */
+.form-actions button {
+  white-space: normal;
+  max-width: 100%;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 480px) {
+  .form-field label {
+    font-size: 0.9rem;
+  }
+  
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+  
+  .theme-modern .form-actions button {
+    padding: 10px 15px;
+    font-size: 0.95rem;
+  }
+}
