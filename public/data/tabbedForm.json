@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Schema for a form with tabbed navigation.",
+  "note": "Demonstrates tabbed layout using a displayAsTab flag or similar concept on sections.",
+  "FieldDefinition": [
+    {
+      "id": "uuid-placeholder-tf-fd1",
+      "name": "FirstName",
+      "label": "First Name",
+      "dataType": "text",
+      "required": true,
+      "placeholder": "e.g., John",
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-tf-fd2",
+      "name": "LastName",
+      "label": "Last Name",
+      "dataType": "text",
+      "required": true,
+      "placeholder": "e.g., Doe",
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-tf-fd3",
+      "name": "AllergyDescription",
+      "label": "Allergy Description",
+      "dataType": "textarea",
+      "required": false,
+      "placeholder": "e.g., Peanuts, Pollen",
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-tf-fd4",
+      "name": "HasInsurance",
+      "label": "Do you have medical insurance?",
+      "dataType": "radio",
+      "options": [{"value": "yes", "label": "Yes"}, {"value": "no", "label": "No"}],
+      "required": true,
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-tf-fd5",
+      "name": "ReviewComments",
+      "label": "Review Comments",
+      "dataType": "textarea",
+      "placeholder": "Any comments before submission?",
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    }
+  ],
+  "FieldGroupTemplate": [
+    {
+      "id": "uuid-placeholder-tf-fg1",
+      "name": "PersonalInfoGroup",
+      "fields": ["uuid-placeholder-tf-fd1", "uuid-placeholder-tf-fd2"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-tf-fg2",
+      "name": "MedicalHistoryGroup",
+      "fields": ["uuid-placeholder-tf-fd3", "uuid-placeholder-tf-fd4"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-tf-fg3",
+      "name": "ReviewGroup",
+      "fields": ["uuid-placeholder-tf-fd5"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    }
+  ],
+  "SectionTemplate": [
+    {
+      "id": "uuid-placeholder-tf-s1",
+      "name": "Personal Info",
+      "description": "Your personal identification details.",
+      "displayOrder": 1,
+      "fieldGroups": ["uuid-placeholder-tf-fg1"],
+      "displayMode": "tab", // Indicates this section should be rendered as a tab
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-tf-s2",
+      "name": "Medical History",
+      "description": "Relevant medical information.",
+      "displayOrder": 2,
+      "fieldGroups": ["uuid-placeholder-tf-fg2"],
+      "displayMode": "tab", // Indicates this section should be rendered as a tab
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-tf-s3",
+      "name": "Review & Submit",
+      "description": "Review your information before submitting.",
+      "displayOrder": 3,
+      "fieldGroups": ["uuid-placeholder-tf-fg3"],
+      "displayMode": "tab", // Indicates this section should be rendered as a tab
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+    }
+  ],
+  "FormTemplate": {
+    "id": "uuid-placeholder-tf-form1",
+    "name": "TabbedDemoForm",
+    "description": "A form demonstrating a tabbed layout for sections.",
+    "version": "1.0",
+    "category": "demonstration",
+    "sections": [
+      {"sectionId": "uuid-placeholder-tf-s1", "displayOrder": 1, "required": true},
+      {"sectionId": "uuid-placeholder-tf-s2", "displayOrder": 2, "required": false},
+      {"sectionId": "uuid-placeholder-tf-s3", "displayOrder": 3, "required": true}
+    ],
+    "formDisplayMode": "tabs", // A form-level hint that sections might be tabs
+    "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:10:00Z", "version": "1.0" }
+  }
+}

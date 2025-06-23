@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Schema for a multi-step form.",
+  "note": "Demonstrates step-by-step navigation using sections and navigationRules.",
+  "FieldDefinition": [
+    {
+      "id": "uuid-placeholder-ms-fd1",
+      "name": "FullName",
+      "label": "Full Name",
+      "description": "Enter your full name.",
+      "dataType": "text",
+      "required": true,
+      "placeholder": "e.g., Jane Doe",
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-ms-fd2",
+      "name": "Email",
+      "label": "Email Address",
+      "description": "Enter your email address.",
+      "dataType": "email",
+      "required": true,
+      "placeholder": "e.g., jane.doe@example.com",
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-ms-fd3",
+      "name": "StreetAddress",
+      "label": "Street Address",
+      "description": "Enter your street address.",
+      "dataType": "text",
+      "required": true,
+      "placeholder": "e.g., 123 Main St",
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-ms-fd4",
+      "name": "City",
+      "label": "City",
+      "description": "Enter your city.",
+      "dataType": "text",
+      "required": true,
+      "placeholder": "e.g., Anytown",
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-ms-fd5",
+      "name": "ConfirmDetails",
+      "label": "Confirm Details",
+      "description": "Please confirm the details entered are correct.",
+      "dataType": "checkbox",
+      "required": true,
+      "options": [{"value": "true", "label": "I confirm the details are correct."}],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    }
+  ],
+  "FieldGroupTemplate": [
+    {
+      "id": "uuid-placeholder-ms-fg1",
+      "name": "PersonalInfoGroup",
+      "fields": ["uuid-placeholder-ms-fd1", "uuid-placeholder-ms-fd2"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-ms-fg2",
+      "name": "AddressGroup",
+      "fields": ["uuid-placeholder-ms-fd3", "uuid-placeholder-ms-fd4"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-ms-fg3",
+      "name": "ConfirmationGroup",
+      "fields": ["uuid-placeholder-ms-fd5"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    }
+  ],
+  "SectionTemplate": [
+    {
+      "id": "uuid-placeholder-ms-s1",
+      "name": "Step 1: Personal Information",
+      "description": "Your basic personal details.",
+      "displayOrder": 1,
+      "fieldGroups": ["uuid-placeholder-ms-fg1"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-ms-s2",
+      "name": "Step 2: Address Details",
+      "description": "Where you live.",
+      "displayOrder": 2,
+      "fieldGroups": ["uuid-placeholder-ms-fg2"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    },
+    {
+      "id": "uuid-placeholder-ms-s3",
+      "name": "Step 3: Confirmation",
+      "description": "Review and confirm your submission.",
+      "displayOrder": 3,
+      "fieldGroups": ["uuid-placeholder-ms-fg3"],
+      "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+    }
+  ],
+  "FormTemplate": {
+    "id": "uuid-placeholder-ms-form1",
+    "name": "MultiStepDemoForm",
+    "description": "A form demonstrating multi-step navigation.",
+    "version": "1.0",
+    "category": "demonstration",
+    "sections": [
+      {"sectionId": "uuid-placeholder-ms-s1", "displayOrder": 1, "required": true},
+      {"sectionId": "uuid-placeholder-ms-s2", "displayOrder": 2, "required": true},
+      {"sectionId": "uuid-placeholder-ms-s3", "displayOrder": 3, "required": true}
+    ],
+    "navigationRules": {
+      "allowBackNavigation": true,
+      "showProgressIndicator": true,
+      "stepNavigation": true // Assuming a property like this enables step-wise display of sections
+    },
+    "auditMetadata": { "createdBy": "jules_agent", "createdAt": "2024-07-15T10:05:00Z", "version": "1.0" }
+  }
+}

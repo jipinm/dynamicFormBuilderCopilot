@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Schema for a form with conditional field visibility.",
+  "note": "Demonstrates show/hide logic using displayRule.",
+  "FieldDefinition": [
+    {
+      "id": "uuid-placeholder-sh-fd1",
+      "name": "EnableExtraDetails",
+      "label": "Do you want to provide extra details?",
+      "description": "Select Yes to show an additional input field.",
+      "dataType": "select",
+      "required": true,
+      "placeholder": "Select an option",
+      "options": [
+        {"value": "yes", "label": "Yes"},
+        {"value": "no", "label": "No"}
+      ],
+      "defaultValue": "no",
+      "auditMetadata": {
+        "createdBy": "jules_agent",
+        "createdAt": "2024-07-15T10:00:00Z",
+        "version": "1.0"
+      }
+    },
+    {
+      "id": "uuid-placeholder-sh-fd2",
+      "name": "ExtraDetails",
+      "label": "Extra Details",
+      "description": "Provide additional details here.",
+      "dataType": "text",
+      "required": false,
+      "placeholder": "Enter details...",
+      "helpText": "This field is only shown if you select 'Yes' above.",
+      "displayRules": [
+        {
+          "condition": {
+            "field": "uuid-placeholder-sh-fd1",
+            "operator": "equals",
+            "value": "yes"
+          },
+          "visible": true
+        }
+      ],
+      "auditMetadata": {
+        "createdBy": "jules_agent",
+        "createdAt": "2024-07-15T10:00:00Z",
+        "version": "1.0"
+      }
+    },
+    {
+      "id": "uuid-placeholder-sh-fd3",
+      "name": "AdditionalNotes",
+      "label": "Additional Notes",
+      "description": "Any other notes.",
+      "dataType": "textarea",
+      "required": false,
+      "placeholder": "Enter additional notes...",
+      "auditMetadata": {
+        "createdBy": "jules_agent",
+        "createdAt": "2024-07-15T10:00:00Z",
+        "version": "1.0"
+      }
+    }
+  ],
+  "FieldGroupTemplate": [
+    {
+      "id": "uuid-placeholder-sh-fg1",
+      "name": "DetailsGroup",
+      "description": "Group for primary details with conditional logic.",
+      "repeatable": false,
+      "fields": [
+        "uuid-placeholder-sh-fd1",
+        "uuid-placeholder-sh-fd2",
+        "uuid-placeholder-sh-fd3"
+      ],
+      "auditMetadata": {
+        "createdBy": "jules_agent",
+        "createdAt": "2024-07-15T10:00:00Z",
+        "version": "1.0"
+      }
+    }
+  ],
+  "SectionTemplate": [
+    {
+      "id": "uuid-placeholder-sh-s1",
+      "name": "MainSection",
+      "description": "Main section of the form.",
+      "displayOrder": 1,
+      "collapsible": false,
+      "defaultExpanded": true,
+      "fieldGroups": ["uuid-placeholder-sh-fg1"],
+      "auditMetadata": {
+        "createdBy": "jules_agent",
+        "createdAt": "2024-07-15T10:00:00Z",
+        "version": "1.0"
+      }
+    }
+  ],
+  "FormTemplate": {
+    "id": "uuid-placeholder-sh-form1",
+    "name": "ShowHideDemoForm",
+    "description": "A form demonstrating conditional field visibility.",
+    "version": "1.0",
+    "category": "demonstration",
+    "sections": [
+      {
+        "sectionId": "uuid-placeholder-sh-s1",
+        "displayOrder": 1,
+        "required": true
+      }
+    ],
+    "auditMetadata": {
+      "createdBy": "jules_agent",
+      "createdAt": "2024-07-15T10:00:00Z",
+      "version": "1.0"
+    }
+  }
+}
